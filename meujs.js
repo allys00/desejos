@@ -63,6 +63,7 @@ var app = new function() {
 	this.Delete = function (item) { // deletar os Desejos
 		this.desejos.splice(item, 1);
 		this.FetchAll();
+		document.getElementById('spoiler').style.display = 'none';
 	};
 	}
 	app.FetchAll();

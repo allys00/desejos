@@ -3,7 +3,11 @@ var app = new function() {
 		
 		this.desejos = [ // Array com desejos.
 		'Ir a florida final do ano e visitar todos os lugares bonitos',
-		'conseguir comprar um carro',
+		'Comprar um carro',
+		'Reformar a casa',
+		'Comprar um dog',
+		'Terminar a faculdade',
+		'Iniciar a Pós-Graduação'
 		];
 		
 	this.Count = function(data) { //contar elementos no Array
@@ -24,6 +28,8 @@ var app = new function() {
 			for (i = 0; i < this.desejos.length; i++) {
 				data += '<tr>';
 				data += '<td>' + this.desejos[i] + '</td>';
+				data += '</tr>';
+				data += '<tr>';
 				data += '<td><button class="btn btn-primary botao" onclick="app.Edit(' + i + ')">Editar</button></td>';
 				data += '<td><button class="btn btn-danger botao" onclick="app.Delete(' + i + ')">Deletar</button></td>';
 				data += '</tr>';

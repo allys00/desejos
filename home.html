@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+
+<div id="div-desejos" class="div-conteudo container">
+	
+	<p id="counter"></p>
+
+	<table class="table-striped">
+	    <tbody id="desejos">
+	    </tbody>
+	</table>
+	<div id="div-add">
+		<form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+		  <input type="text" id="add-name" class="form-control" placeholder="Novo desejo">
+		  <input type="submit" class="btn btn-primary botao" value="Adicionar">
+		</form>
+	</div>
+	<div id="spoiler" role="aria-hidden">
+	  <form action="javascript:void(0);" method="POST" id="saveEdit">
+	    <input type="text" class="form-control" id="edit-name"> 
+	    <button onclick="CloseInput()" class=" btn btn-danger botao" aria-label="Close">Cancelar</button>
+	    <input type="submit" class=" btn btn-primary botao" value="Salvar" />
+	  </form>
+	</div>
+	<br><br>
+	<button class="btn botao-sair btn-danger"><a href="index.html"> Sair </a></button>
+</div>
+
+<script type="text/javascript" src="meujs.js"></script>
+</body>
+</html>

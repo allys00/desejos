@@ -2,10 +2,11 @@ var app = new function() {
 		this.el = document.getElementById('desejos');
 		
 		this.desejos = [ // Array com desejos.
-		'Ir a florida final do ano e visitar todos os lugares bonitos',
+		'Ir passar minhas férias na Florida final do ano',
 		'Comprar um carro',
 		'Reformar a casa',
 		'Comprar um dog',
+		'Conseguir um Estágio',
 		'Terminar a faculdade',
 		'Iniciar a Pós-Graduação'
 		];
@@ -27,9 +28,9 @@ var app = new function() {
 		if (this.desejos.length > 0) {
 			for (i = 0; i < this.desejos.length; i++) {
 				data += '<tr>';
-				data += '<td>' + this.desejos[i] + '</td>';
-				data += '<td><i class="glyphicon glyphicon-pencil" onclick="app.Edit(' + i + ')"></i></td>';
-				data += '<td><i class="glyphicon glyphicon-remove" aria-hidden="true" onclick="app.Delete(' + i + ')"></i></td>';
+				data += '<td><i class="glyphicon glyphicon-asterisk"></i> ' + this.desejos[i] + '</td>';
+				data += '<td><i data-toggle="modal" data-target="#myModal" data-placement="left" title="Editar" class="glyphicon glyphicon-pencil" onclick="app.Edit(' + i + ')"></i></td>';
+				data += '<td><i data-toggle="tooltip" data-placement="right" title="Delete"class="glyphicon glyphicon-remove" aria-hidden="true" onclick="app.Delete(' + i + ')"></i></td>';
 				data += '</tr>';
 			}
 		}
@@ -49,6 +50,7 @@ var app = new function() {
 		var el = document.getElementById('edit-name');
 		el.value = this.desejos[item];
 		document.getElementById('spoiler').style.display = 'block';
+		document.getElementById('div-add').style.display = 'none';
 		self = this;
 		document.getElementById('saveEdit').onsubmit = function() {
 			var desejo = el.value;
@@ -66,7 +68,12 @@ var app = new function() {
 		document.getElementById('spoiler').style.display = 'none';
 	};
 	}
+	this.showAdd = function(){
+		document.getElementById('div-add').style.display = 'block';
+	}
 	app.FetchAll();
 	function CloseInput() {
 		document.getElementById('spoiler').style.display = 'none';
+		showAdd();
 	}
+

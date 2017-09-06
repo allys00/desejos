@@ -18,6 +18,15 @@
 	padding-left: 10px;
 	font-family: "Times New Roman", Georgia, Serif;
 }
+#spoiler{
+	margin-top: 20px;
+	height: 100px;
+}
+.divisor{
+	border: 1px solid black;
+	border-radius: 40%;
+	margin-top: 10px;
+}
 .botao{
 	float: right;
 	margin-right: 5px;
@@ -25,12 +34,20 @@
 	margin-left: 5px;
 	box-shadow: 2px 2px 10px black;
 }
+.btn-danger{
+	width: 100px;
+}
 .glyphicon{
 	padding-top: 5px;
 	padding-left: 20px;
+	font-size: 22px;
 }
 .glyphicon-remove{
 	color: red;
+}
+ .glyphicon-asterisk{
+	padding-left: -10px;
+	font-size: 10px;
 }
 .alert-info{
 	margin-top: 25px;

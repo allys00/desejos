@@ -20,6 +20,9 @@
 	    <tbody id="desejos">
 	    </tbody>
 	</table>
+	<div class="divisor">
+		
+	</div>
 	<div id="div-add">
 		<form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
 		  <input type="text" id="add-name" class="form-control" placeholder="Novo desejo">
@@ -29,8 +32,8 @@
 	<div id="spoiler" role="aria-hidden">
 	  <form action="javascript:void(0);" method="POST" id="saveEdit">
 	    <input type="text" class="form-control" id="edit-name">
-	    <button onclick="CloseInput()" class=" btn btn-danger botao" aria-label="Close">Cancelar</button>
-	    <input type="submit" class=" btn btn-primary botao" value="Salvar" />
+	    <input onclick="CloseInput() " class="btn btn-danger botao" aria-label="Close" value="Cancelar">
+	    <input type="submit" onclick="showAdd()" class=" btn btn-primary botao" value="Salvar"/>
 	  </form>
 	</div>
 	<br><br>

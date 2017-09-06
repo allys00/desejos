@@ -28,8 +28,8 @@ var app = new function() {
 			for (i = 0; i < this.desejos.length; i++) {
 				data += '<tr>';
 				data += '<td>' + this.desejos[i] + '</td>';
-				data += '<td><button class="btn btn-primary botao" onclick="app.Edit(' + i + ')">Editar</button></td>';
-				data += '<td><button class="btn btn-danger botao" onclick="app.Delete(' + i + ')">Deletar</button></td>';
+				data += '<td><i class="glyphicon glyphicon-pencil" onclick="app.Edit(' + i + ')"></i></td>';
+				data += '<td><i class="glyphicon glyphicon-remove" aria-hidden="true" onclick="app.Delete(' + i + ')"></i></td>';
 				data += '</tr>';
 			}
 		}

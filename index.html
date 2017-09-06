@@ -5,16 +5,18 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 		var usuario = {};
 		var autLogin = false;
 		var email_bd = [{email:"foitop@foitop", senha:"123"},{email:"teste@teste", senha:"321"}];
 		function validarLogin(){
-			usuario.email = document.getElementById('email').value;
-			usuario.senha = document.getElementById('senha').value;
-			
+			usuario.email = document.getElementById('log-email').value;
+			usuario.senha = document.getElementById('log-senha').value;
 			if (usuario.email == "" || usuario.senha == ""){
-				alert("Preencha todos os campos!")
+				document.getElementById('campovazio').style.display = "block";
+				document.getElementById('usuarioInvalido').style.display = "none";
 			}else{
 				for(var i=0; i<email_bd.length; i++) {
 	    			if(email_bd[i].email == usuario.email && email_bd[i].senha == usuario.senha){
@@ -23,37 +25,89 @@
 	   				}
 				}
 				if (!autLogin){
-					alert("Login Inválido!");
+					document.getElementById('campovazio').style.display = "none";
+					document.getElementById('usuarioInvalido').style.display = "block";
 				}
 			}
 		}	
-		function mostrarContas(){
-			document.getElementById('contas').style.display = 'block';
-		}	
+		function validarCadastro(){
+			var nome = document.getElementById('cad-nome');
+			var sobrenome = document.getElementById('cad-sobrenome');
+			var email = document.getElementById('cad-email');
+			var senha = document.getElementById('cad-senha');
+			if(nome.value == "" || email.value == "" || senha.value == "" || sobrenome.value == ""){
+				document.getElementById('mod-campovazio').style.display = 'block';
+			}else{
+				window.location.href = "index.html";
+			}
+		}
+
+		/*popover*/
+		$(document).ready(function(){
+   			$('[data-toggle="popover"]').popover();   
+		});
 	</script>
 </head>
 <body>
 	<div class="div-conteudo container">
 		<h1 id="formulario"> Login </h1>
 		  	<div class="form-group">
-		   		<input id="email" type="email" class="form-control" placeholder="E-mail" name="email" required>
+		   		<input id="log-email" type="email" class="form-control" placeholder="E-mail" name="email" required>
 		  	</div>
 		  	<div class="form-group ">
-		   		<input id="senha" type="password" class="form-control" placeholder="Senha" name="senha" required>
+		   		<input id="log-senha" type="password" class="form-control" placeholder="Senha" name="senha" required>
 		  	</div>
 		  	<div class="form-group">
-		  		<a href="cadastro.html"><button class="btn btn-info botao">Cadastre-se</button></a>
 		   		<button id="botao-login" class="btn btn-primary botao" onclick="validarLogin()"/>Entrar</button>
 		  	</div>
-		  	<div>
-		  		<button class="btn btn-warning" onclick="mostrarContas()">Ver contas Cadastradas</button>
-		  	</div>
-		  	<div id="contas" style="display: none;">
-			  	<span>Email: foitop@foitop - Senha: 123</span>
-			  	<br>
-			  	<span>Email: teste@teste - Senha: 321</span>
-		  	</div>
 
+		  	<!-- BTN-MODAL -->
+		  	<button type="button" class="btn btn-info botao" data-toggle="modal" data-target="#myModal">Cadastre-se</button>
+
+			 <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h2 class="modal-title">Cadastro</h2>
+			        </div>
+			        <!-- fim content-->
+			        <!-- Modal body-->
+			        <div class="modal-body">
+				   		<div class="form-group">
+					   		<h4>Foto</h4><input id="cad-foto" type="file" name="foto" value="" >
+					  	</div>
+						<div class="form-group">
+					   		<input  id="cad-nome" maxlength="20" type="text" class="form-control nome" placeholder="Nome" >
+					   		<input id="cad-sobrenome" maxlength="20" type="text" class="form-control nome" placeholder="Sobrenome">
+						</div>
+					  	<div class="form-group">
+					   		<input id="cad-email" type="email" class="form-control" placeholder="E-mail">
+					  	</div>
+					  	<div class="form-group">
+					   		<input id="cad-senha" type="password" class="form-control" placeholder="Senha">
+					  	</div>
+					  	<div id="mod-campovazio" class="alert alert-info" style="display: none">
+ 							<strong>Atenção: </strong> Preencha todos os campos!
+						</div>
+			        </div><!-- Fim Body-->
+			        <div class="modal-footer">
+			          	<button class="btn btn-primary botao" onclick="validarCadastro()">Cadastrar</button> 
+					  	<button class="btn btn-danger botao" data-dismiss="modal"> Cancelar </button>
+			        </div><!-- Fim Foote-->
+			      </div><!-- Fim Content-->
+			    </div><!-- Fim Dialog-->
+			  </div><!-- Fim Modal-->
+			  <br>
+			<a href="#" title="Contas" data-toggle="popover" data-placement="bottom" data-content="Email: foitop@foitop - Senha: 123">Contas cadastradas</a>
+			<div id="usuarioInvalido" class="alert alert-danger" style="display: none">
+ 				<strong>Erro: </strong> Usuário inválido, verifique seu email e senha!
+			</div>
+			<div id="campovazio" class="alert alert-info" style="display: none">
+ 				<strong>Atenção: </strong> Preencha todos os campos!
+			</div>
 	</div>
 </body>
 </html>

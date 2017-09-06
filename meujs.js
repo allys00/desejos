@@ -19,7 +19,7 @@ var app = new function() {
 			}
 		el.innerHTML = data + ' ' + name ;
 		} else {
-			el.innerHTML = 'No ' + name;
+			el.innerHTML = 'Sem ' + name;
 		}
 	};
 	this.FetchAll = function() { // função que coloca os desejos na tela
@@ -58,6 +58,7 @@ var app = new function() {
 				CloseInput();
 			}
 		}
+		document.getElementById('edit-name').focus()
 	};
 	this.Delete = function (item) { // deletar os Desejos
 		this.desejos.splice(item, 1);

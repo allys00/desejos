@@ -8,7 +8,7 @@
 	<script>
 		var usuario = {};
 		var autLogin = false;
-		var email_bd = [{email:"andre@andre", senha:"123"},{email:"julia@julia", senha:"321"}];
+		var email_bd = [{email:"foitop@foitop", senha:"123"},{email:"teste@teste", senha:"321"}];
 		function validarLogin(){
 			usuario.email = document.getElementById('email').value;
 			usuario.senha = document.getElementById('senha').value;
@@ -26,7 +26,10 @@
 					alert("Login Inválido!");
 				}
 			}
-		}		
+		}	
+		function mostrarContas(){
+			document.getElementById('contas').style.display = 'block';
+		}	
 	</script>
 </head>
 <body>
@@ -42,6 +45,15 @@
 		  		<a href="cadastro.html"><button class="btn btn-info botao">Cadastre-se</button></a>
 		   		<button id="botao-login" class="btn btn-primary botao" onclick="validarLogin()"/>Entrar</button>
 		  	</div>
+		  	<div>
+		  		<button class="btn btn-warning" onclick="mostrarContas()">Ver contas Cadastradas</button>
+		  	</div>
+		  	<div id="contas" style="display: none;">
+			  	<span>Email: foitop@foitop - Senha: 123</span>
+			  	<br>
+			  	<span>Email: teste@teste - Senha: 321</span>
+		  	</div>
+
 	</div>
 </body>
 </html>
